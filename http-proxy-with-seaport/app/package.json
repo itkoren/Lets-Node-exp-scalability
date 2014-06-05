@@ -1,0 +1,24 @@
+{
+    "name": "scalability-examples",
+    "version": "0.0.1",
+    "description": "Examples for Scalability - http-proxy with seaport",
+    "private": true,
+    "scripts": {
+        "start": "node ./app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "express": "4.1.x",
+        "body-parser": "1.0.x",
+        "method-override": "1.0.x",
+        "morgan": "1.0.x",
+        "errorhandler": "1.0.x",
+        "response-time": "1.0.x",
+        "seaport": "2.0.x"
+    },
+    "author": "Itai Koren (@itkoren)",
+    "license": "MIT",
+    "engines": {
+        "node": ">= 0.10.x"
+    }
+}
