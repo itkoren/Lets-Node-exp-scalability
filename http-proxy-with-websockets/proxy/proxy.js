@@ -44,6 +44,13 @@ var server = https.createServer(options, function (req, res) {
     // Get the worker server that should process the current request
     var target = nextProxy();
 
+    // If there are not workers, give an error
+    if (!target) {
+        res.writeHead(503, { "Content-Type": "text/plain" });
+        res.end("Service unavailable");
+        return;
+    }
+
     // Proxy the request to the selected worker server
     console.log("balancing request to:", target.options.target);
     target.web(req, res);
@@ -58,5 +65,6 @@ server.on("upgrade", function (req, socket, head) {
     // A simple Round Robin implementation
     // Get the worker server that should process the current request
     var target = nextProxy();
+
     target.ws(req, socket, head);
 });

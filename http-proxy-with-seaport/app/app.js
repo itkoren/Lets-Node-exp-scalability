@@ -22,7 +22,8 @@ if (cluster.isMaster) {
         // instead of the one that died
         cluster.fork();
     });
-} else {
+}
+else {
     // Workers can share any TCP connection
     // In this case its an Express server
 
