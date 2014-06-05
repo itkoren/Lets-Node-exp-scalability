@@ -33,6 +33,7 @@ function nextProxy() {
     return proxy;
 }
 
+// Load the certificates
 var options = {
     key: fs.readFileSync("./key.pem"),
     cert: fs.readFileSync("./key-cert.pem")
@@ -53,7 +54,7 @@ var server = https.createServer(options, function (req, res) {
 //
 // Get the 'next' proxy and send the upgrade request
 //
-server.on('upgrade', function (req, socket, head) {
+server.on("upgrade", function (req, socket, head) {
     // A simple Round Robin implementation
     // Get the worker server that should process the current request
     var target = nextProxy();
