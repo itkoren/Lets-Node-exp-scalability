@@ -1,0 +1,12 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+div {
+    display: inline;
+}
+
+.main {
+  padding-top: 100px;
+}

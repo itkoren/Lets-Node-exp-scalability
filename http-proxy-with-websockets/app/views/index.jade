@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    div(class="navbar navbar-inverse navbar-fixed-top", role="navigation")
+        div.container
+            div.navbar.navbar-fixed-top.navbar-inverse
+                div.navbar-inner
+                    div.pull-right
+                        p.navbar-brand WebSockets - ws
+
+    div
+        div
+            div.container
+                h1= title
+                p WebSockets Example (with "ws")
+                br
+                div
+                    b Server Stats
+                    br
+                    div Connected:
+                        #connected false
+                        br
+                    div RSS:
+                        #rss
+                        br
+                    div Heap total:
+                        #heapTotal
+                        br
+                    div Heap used:
+                        #heapUsed
+                        br
+    script(type="text/javascript", src="/javascripts/wsclient.js")
