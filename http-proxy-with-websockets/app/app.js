@@ -3,7 +3,7 @@ var app = require("./express");
 var WebSocketServer = require("ws").Server;
 
 var server = http.createServer(app).listen(app.get("port"), function(){
-    console.log("Express Server listening on port", server.address().port);
+    console.log("Express Server listening on port", server.address().port, "-> pid:", process.pid);
 });
 
 // Initialize a ws server
@@ -21,6 +21,10 @@ wss.on("connection", function(conn) {
     conn.send(JSON.stringify({ connected: true }));
 
     var interval = setInterval(function() {
+        var welcome = "Data from " + app.get("ip") + ":" + app.get("port") + "->pid:" + process.pid;
+
+        console.log("SEND:", welcome);
+        
         conn.send(JSON.stringify(process.memoryUsage()), function() { /* ignore errors */ });
     }, 100);
     console.log("started client interval");

@@ -32,15 +32,19 @@ app.use(methodOverride());
 app.use(responseTime());
 
 app.get("/", function(req, res) {
+    var welcome = "Welcome from " + app.get("ip") + ":" + app.get("port") + "->pid:" + process.pid;
+
+    console.log("SEND:", welcome);
+
     res.format({
         "text/plain": function() {
-            res.send("welcome");
+            res.send(welcome);
         },
         "text/html": function() {
-            res.send("<b>welcome</b>");
+            res.send("<b>" + welcome + "</b>");
         },
         "application/json": function() {
-            res.json({ message: "welcome" });
+            res.json({ message: welcome });
         },
         "default": function() {
             res.send(406, "Not Acceptable");
@@ -65,6 +69,6 @@ var cluster = new Cluster({
 
 // Kick-Start the cluster
 cluster.listen(function(callback) {
-    console.log("Express Server listening on port", cluster.options.port);
+    console.log("Express Server listening on port", cluster.options.port, "-> pid:", process.pid);
     callback(app);
 });

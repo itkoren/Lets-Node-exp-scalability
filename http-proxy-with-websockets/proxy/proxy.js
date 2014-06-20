@@ -35,8 +35,8 @@ function nextProxy() {
 
 // Load the certificates
 var options = {
-    key: fs.readFileSync("./key.pem"),
-    cert: fs.readFileSync("./key-cert.pem")
+    key: fs.readFileSync(__dirname + "/key.pem"),
+    cert: fs.readFileSync(__dirname + "/key-cert.pem")
 };
 
 var server = https.createServer(options, function (req, res) {
